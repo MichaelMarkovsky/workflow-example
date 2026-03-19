@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd ~/Projects/onehealth/
+
+# Start docker
+docker compose up -d
+
+# Start animation
+unimatrix -t 2 -s 97
+
+# Run kitty session
+kitty --detach --session ~/Projects/onehealth/launch.kitty-session
+
+# Kill the parent terminal
+kill -9 $PPID
