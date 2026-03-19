@@ -1,0 +1,15 @@
+layout grid
+
+launch --title "Docker" --cwd ~/Projects/onehealth bash -c "lazydocker"
+launch --title "Frontend" --cwd ~/Projects/onehealth/frontend/onehealth-app bash -c "npm run dev; exec bash"
+
+launch --title "Database viewer" --cwd ~/Projects/onehealth lazysql "postgres://...."
+launch --title "Backend" --cwd ~/Projects/onehealth bash -c "./venv/bin/python -m uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000; exec bash"
+
+new_tab Code_Edit
+launch --cwd ~/Projects/onehealth nvim
+
+
+new_tab Site_sessions
+launch firefox http://127.0.0.1:8000/docs
+launch firefox http://192.168.1.180:3000
